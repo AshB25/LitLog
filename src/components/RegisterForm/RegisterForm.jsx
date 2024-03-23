@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  // const [cell, setCell] = useState('');
+  // const [img, setImg] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -15,6 +18,7 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
+        email: email,
       },
     });
   }; // end registerUser
@@ -52,7 +56,55 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <label htmlFor="password">
+          Email:
+          <input
+            type="text"
+            name="email"
+            value={email}
+            required
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </label>
+      </div>
+      {/* <div>
+        <label htmlFor="password">
+          Phone Number:
+          <input
+            type="text"
+            name="cell"
+            value={cell}
+            required
+            onChange={(event) => setCell(event.target.value)}
+          />
+        </label>
+      </div> */}
+      {/* <div>
+        <label htmlFor="password">
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={password}
+            required
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+      </div> */}
+      {/* <div>
+        <label htmlFor="password">
+          Avatar:
+          <input
+            type="text"
+            name="img"
+            value={img}
+            required
+            onChange={(event) => setImg(event.target.value)}
+          />
+        </label>
+      </div> */}
+      <div>
+        <input className="btn" type="submit" name="submit" value="Sign Up" />
       </div>
     </form>
   );
