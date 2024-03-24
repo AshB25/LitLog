@@ -1,6 +1,7 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AddBookButton from '../AddBookButton /AddBookButton';
+import BookList from '../BookList/BookList';
 import { useSelector } from 'react-redux';
 
 function UserPage() {
@@ -12,6 +13,7 @@ function UserPage() {
       <h2>Welcome, {user.username}!</h2>
       <p>Edit Profile</p>
       <h3>Goals</h3>
+      <BookList />
       <AddBookButton />
       <LogOutButton className="btn" />
     </div>

@@ -6,6 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
+  console.log('in get all books request');
   // GET route code here
   const queryText = `SELECT * FROM "books"
   ORDER BY "author";`;
