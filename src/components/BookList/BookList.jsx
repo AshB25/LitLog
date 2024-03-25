@@ -17,6 +17,7 @@ function BookList() {
             <ul>
               <li>{books.title}</li>
               <li>{books.author}</li>
+              <img src={books.cover} alt={books.title} />
             </ul>
           </div>
         );
