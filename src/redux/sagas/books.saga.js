@@ -13,8 +13,22 @@ function* fetchBooks() {
   }
 }
 
+function* postBooks(action) {
+  try {
+    yield axios({
+      method: 'POST',
+      url: '/api/books',
+      data: action.payload,
+    });
+    yield put({ type: 'FETCH_BOOKS' });
+  } catch (error) {
+    console.log('post books error', error);
+  }
+}
+
 function* booksSaga() {
   yield takeLatest('FETCH_BOOKS', fetchBooks);
+  yield takeLatest('POST_BOOKS', postBooks);
 }
 
 export default booksSaga;
