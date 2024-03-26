@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-function BookList() {
+function BookList({ refreshBookList }) {
   const dispatch = useDispatch();
   const books = useSelector((store) => store.books);
 
@@ -18,6 +18,7 @@ function BookList() {
               <li>{books.title}</li>
               <li>{books.author}</li>
               <img src={books.cover} alt={books.title} />
+              refreshBookList={refreshBookList}
             </ul>
           </div>
         );
