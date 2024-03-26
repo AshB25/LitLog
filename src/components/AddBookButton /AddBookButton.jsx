@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // const handleSubmit = (event) => {
 //   event.preventDefault();
 // };
-
+//button to take user to add new book page
 function AddBookButton() {
   // const dispatch = useDispatch();
   return (
