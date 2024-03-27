@@ -22,6 +22,8 @@ Install project dependencies
 //ADD OTHER DEPENDENCIES USED LATER
 npm install
 ```
+npm install @mui/material @emotion/react @emotion/styled
+```
 
 And repeat
 
