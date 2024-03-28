@@ -13,7 +13,14 @@ export default function DeadlineButton() {
       autoComplete="off"
     >
       <div>
-        <TextField id="outlined-password-input" label="Deadline" type="date" />
+        <TextField
+          id="outlined-password-input"
+          label="Deadline"
+          type="date"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
       </div>
     </Box>
   );
