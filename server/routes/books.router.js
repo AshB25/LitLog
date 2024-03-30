@@ -31,14 +31,15 @@ router.get('/:userID', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/:userID', (req, res) => {
+  const { userID } = req.params;
+  console.log('POST', userID);
+
   const queryText = `INSERT INTO "books" ("title", "author", "pubdate", "pagecount", "cover")
   VALUES ($1, $2, $3, $4, $5);`;
 
-  const { title, author, pubdate, pagecount, cover } = req.body;
-
   pool
-    .query(queryText, [title, author, pubdate, pagecount, cover])
+    .query(queryText, [userID])
     .then((result) => {
       res.sendStatus(201);
     })
