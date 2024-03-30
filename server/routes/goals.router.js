@@ -10,20 +10,20 @@ router.get('/:userId', (req, res) => {
   const { userId } = req.params;
   console.log(userId);
 
-  // const queryText = `SELECT "goals".book_title, "goals".number, "goals".chp_pgs, "goals".deadline FROM "books"
-  // JOIN "goals" ON "books"."id"="goals"."book_id"
-  // JOIN "user" ON "user"."id"="goals"."user_id"
-  // WHERE "book_id" = $1;`;
+  const queryText = `SELECT * FROM "goals"
+  JOIN "user" ON "user"."id"="goals"."user_id"
+  WHERE "user"."id" = $1;`;
 
-  // pool
-  //   .query(queryText, [])
-  //   .then((result) => {
-  //     res.send(result.rows);
-  //   })
-  //   .catch((err) => {
-  //     console.log('ERROR: Get goals', err);
-  //     res.sendStatus(500);
-  //   });
+  pool
+    .query(queryText, [userId])
+    .then((result) => {
+      console.log(result.rows);
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('ERROR: Get goals', err);
+      res.sendStatus(500);
+    });
 });
 
 /**
