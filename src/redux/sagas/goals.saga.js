@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { put, take, takeLatest } from 'redux-saga/effects';
 
-function* fetchGoals() {
+function* fetchGoals(action) {
   try {
-    const goalsResponse = yield axios.get('/api/goals');
+    const goalsResponse = yield axios.get(`/api/goals/${action.payload}`);
     yield put({
       type: 'SET_GOALS',
       payload: goalsResponse.data,

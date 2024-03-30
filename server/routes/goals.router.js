@@ -5,25 +5,26 @@ const router = express.Router();
 /**
  * GET route template
  */
-// router.get('/', (req, res) => {
-//   GET route code here
-//   console.log('get goals request');
+router.get('/:userId', (req, res) => {
+  // GET route code here
+  const { userId } = req.params;
+  console.log(userId);
 
-//   const queryText = `SELECT "goals".book_title, "goals".number, "goals".chp_pgs, "goals".deadline FROM "books"
-//   JOIN "goals" ON "books"."id"="goals"."book_id"
-//   JOIN "user" ON "user"."id"="goals"."user_id"
-//   WHERE "book_id" = $1;`;
+  // const queryText = `SELECT "goals".book_title, "goals".number, "goals".chp_pgs, "goals".deadline FROM "books"
+  // JOIN "goals" ON "books"."id"="goals"."book_id"
+  // JOIN "user" ON "user"."id"="goals"."user_id"
+  // WHERE "book_id" = $1;`;
 
-//   pool
-//     .query(queryText)
-//     .then((result) => {
-//       res.send(result.rows);
-//     })
-//     .catch((err) => {
-//       console.log('ERROR: Get goals', err);
-//       res.sendStatus(500);
-//     });
-// });
+  // pool
+  //   .query(queryText, [])
+  //   .then((result) => {
+  //     res.send(result.rows);
+  //   })
+  //   .catch((err) => {
+  //     console.log('ERROR: Get goals', err);
+  //     res.sendStatus(500);
+  //   });
+});
 
 /**
  * POST route template
