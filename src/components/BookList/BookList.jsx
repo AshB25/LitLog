@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 function BookList({ refreshBookList }) {
   const dispatch = useDispatch();
   const books = useSelector((store) => store.books);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_BOOKS' });
+    dispatch({ type: 'FETCH_BOOKS', payload: user.id });
   }, []);
 
   return (

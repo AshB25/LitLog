@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchBooks() {
+function* fetchBooks(action) {
   try {
-    const booksResponse = yield axios.get('/api/books');
+    const booksResponse = yield axios.get(`/api/books/${action.payload}`);
     yield put({
       type: 'SET_BOOKS',
       payload: booksResponse.data,

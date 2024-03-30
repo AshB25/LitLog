@@ -5,15 +5,21 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:userID', (req, res) => {
   console.log('in get all books request');
   // GET route code here
+  const { userID } = req.params;
+  console.log(userID);
+
   const queryText = `SELECT * FROM "books"
+  JOIN "user" ON "user"."id"="books"."user_id"
+  WHERE "user"."id" = $1
   ORDER BY "author";`;
 
   pool
-    .query(queryText)
+    .query(queryText, [userID])
     .then((result) => {
+      console.log('books get', result.rows);
       res.send(result.rows);
     })
     .catch((err) => {
