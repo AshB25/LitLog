@@ -11,7 +11,7 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.id}!</h2>
+      <h2>Welcome, {user.username}!</h2>
       <p>Edit Profile</p>
       <h3>Goals</h3>
       <GoalList />

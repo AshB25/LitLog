@@ -16,6 +16,9 @@ function GoalList() {
         return (
           <div key={goals.id}>
             <h4>{goals.book_title}</h4>
+            <h4>{goals.number}</h4>
+            <h4>{goals.chp_pgs}</h4>
+            <h4>{goals.deadline}</h4>
           </div>
         );
       })}
