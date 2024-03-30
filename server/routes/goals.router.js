@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
   const { book_title, number, chp_pgs, deadline } = req.body;
 
   pool
-    .query(queryText, [req.body])
+    .query(queryText, [book_title, number, chp_pgs, deadline])
     .then((result) => {
       res.sendStatus(201);
     })

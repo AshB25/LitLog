@@ -5,7 +5,7 @@ function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  // const [cell, setCell] = useState('');
+  const [cell_num, setCell_Num] = useState('');
   // const [img, setImg] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
@@ -17,8 +17,9 @@ function RegisterForm() {
       type: 'REGISTER',
       payload: {
         username: username,
-        password: password,
         email: email,
+        cell_num: cell_num,
+        password: password,
       },
     });
   }; // end registerUser
@@ -45,18 +46,6 @@ function RegisterForm() {
       </div>
       <div>
         <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
           Email:
           <input
             type="text"
@@ -67,18 +56,30 @@ function RegisterForm() {
           />
         </label>
       </div>
-      {/* <div>
+      <div>
         <label htmlFor="password">
           Phone Number:
           <input
             type="text"
-            name="cell"
-            value={cell}
+            name="cellnum"
+            value={cell_num}
             required
-            onChange={(event) => setCell(event.target.value)}
+            onChange={(event) => setCell_Num(event.target.value)}
           />
         </label>
-      </div> */}
+      </div>
+      <div>
+        <label htmlFor="password">
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={password}
+            required
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+      </div>
       {/* <div>
         <label htmlFor="password">
           Password:
