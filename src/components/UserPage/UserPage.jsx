@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AddBookButton from '../AddBookButton /AddBookButton';
 import BookList from '../BookList/BookList';
 import GoalList from '../GoalList/GoalList';
-import { useSelector } from 'react-redux';
+import Calendar from '../FullCalendar/FullCalendar';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -15,6 +16,7 @@ function UserPage() {
       <p>Edit Profile</p>
       <h3>Goals</h3>
       <GoalList />
+      <Calendar />
       <BookList />
       <AddBookButton />
       <LogOutButton className="btn" />
