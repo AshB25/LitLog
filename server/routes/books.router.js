@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/:userID', (req, res) => {
   console.log('in get all books request');
   // GET route code here
+  console.log(req.params);
   const { userID } = req.params;
   console.log(userID);
 
@@ -35,10 +36,11 @@ router.post('/', (req, res) => {
   // const { userID } = req.params;
   console.log('POST');
 
-  const queryText = `INSERT INTO "books" ("title", "author", "pubdate", "pagecount", "cover")
-  VALUES ($1, $2, $3, $4, $5);`;
+  const queryText = `INSERT INTO "books" ("user_id", "title", "author", "pubdate", "pagecount", "cover")
+  VALUES ($1, $2, $3, $4, $5, $6);`;
 
   const sqlValues = [
+    1,
     req.body.title,
     req.body.author,
     req.body.pubdate,

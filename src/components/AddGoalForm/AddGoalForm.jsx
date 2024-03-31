@@ -1,12 +1,21 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import DeadlineButton from '../DeadlineButton/DeadlineButton';
 import ChpPgButton from '../ChpPgButton/ChpPgButton';
 
 function GoalForm() {
-  const [title, setTitle] = useState('');
-  const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  // const [title, setTitle] = useState('');
+  // const [number, setNumber] = useState('');
+  const [newGoal, setNewGoal] = useState('');
+
+  const addGoal = (event) => {
+    event.preventDefault();
+    dispatch({ type: 'POST_GOALS', payload: newGoal });
+    setNewGoal({ title: '', number: '' });
+  };
 
   return (
     <section>
@@ -14,21 +23,25 @@ function GoalForm() {
         <input
           required
           placeholder="Title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          value={newGoal.title}
+          onChange={(event) =>
+            setNewGoal({ ...newGoal, title: event.target.value })
+          }
         />
         <input
           required
           placeholder="#"
-          value={number}
-          onChange={(event) => setNumber(event.target.value)}
+          value={newGoal.number}
+          onChange={(event) =>
+            setNewGoal({ ...newGoal, number: event.target.value })
+          }
         />
 
         <ChpPgButton />
         <DeadlineButton />
 
         <Link to="user">
-          <button type="submit">Save New Goal!</button>
+          <button onClick={addGoal}>Save New Goal!</button>
         </Link>
       </form>
     </section>
