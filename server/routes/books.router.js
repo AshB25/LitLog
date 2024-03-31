@@ -1,16 +1,21 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
  */
-router.get('/:userID', (req, res) => {
-  console.log('in get all books request');
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
-  console.log(req.params);
-  const { userID } = req.params;
-  console.log(userID);
+  console.log('get all books request');
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+  // console.log(req.params);
+  // const { userID } = req.params;
+  // console.log(userID);
 
   const queryText = `SELECT * FROM "books"
   JOIN "user" ON "user"."id"="books"."user_id"
@@ -18,7 +23,7 @@ router.get('/:userID', (req, res) => {
   ORDER BY "author";`;
 
   pool
-    .query(queryText, [userID])
+    .query(queryText, [req.user.id])
     .then((result) => {
       console.log('books get', result.rows);
       res.send(result.rows);
