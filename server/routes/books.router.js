@@ -13,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('get all books request');
   console.log('is authenticated?', req.isAuthenticated());
   console.log('user', req.user);
-  // console.log(req.params);
+  console.log(req.params);
   // const { userID } = req.params;
   // console.log(userID);
 

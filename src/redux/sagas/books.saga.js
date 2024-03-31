@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchBooks(action) {
   try {
-    const booksResponse = yield axios.get(`/api/books/${action.payload}`);
+    const booksResponse = yield axios.get('/api/books/');
     yield put({
       type: 'SET_BOOKS',
       payload: booksResponse.data,

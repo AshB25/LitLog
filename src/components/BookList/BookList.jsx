@@ -7,24 +7,28 @@ function BookList({ refreshBookList }) {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_BOOKS', payload: user.id });
+    dispatch({ type: 'FETCH_BOOKS' });
   }, []);
 
   return (
-    <section className="books">
-      {books.map((books) => {
-        return (
-          <div key={books.id}>
-            <ul>
-              <li>{books.title}</li>
-              <li>{books.author}</li>
-              <img src={books.cover} alt={books.title} />
-              {/* refreshBookList={refreshBookList} */}
-            </ul>
-          </div>
-        );
-      })}
-    </section>
+    <div className="container">
+      <h1>Books</h1>
+
+      <section className="books">
+        {books.map((books) => {
+          return (
+            <div key={books.id}>
+              <ul>
+                <li>{books.title}</li>
+                <li>{books.author}</li>
+                <img src={books.cover} alt={books.title} />
+                refreshBookList={refreshBookList}
+              </ul>
+            </div>
+          );
+        })}
+      </section>
+    </div>
   );
 }
 
