@@ -19,7 +19,7 @@ function BookList({ refreshBookList }) {
               <li>{books.title}</li>
               <li>{books.author}</li>
               <img src={books.cover} alt={books.title} />
-              refreshBookList={refreshBookList}
+              {/* refreshBookList={refreshBookList} */}
             </ul>
           </div>
         );

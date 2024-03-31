@@ -1,33 +1,43 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function BookForm({ refreshBookList }) {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [pubdate, setPubDate] = useState('');
-  const [pagecount, setPageCount] = useState('');
-  const [cover, setCover] = useState('');
+  const dispatch = useDispatch();
+  // const [title, setTitle] = useState('');
+  // const [author, setAuthor] = useState('');
+  // // const [pubdate, setPubDate] = useState('');
+  // const [pagecount, setPageCount] = useState('');
+  // const [cover, setCover] = useState('');
+  const [newBook, setNewBook] = useState({
+    title: '',
+    author: '',
+    pagecount: '',
+    cover: '',
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch({ type: 'POST_BOOKS', payload: newBook });
+    setNewBook({ title: '', author: '', pagecount: '', cover: '' });
 
-    console.log('Add Book');
+    //   console.log('Add Book', { title, author, pubdate, pagecount, cover });
 
-    axios
-      .post('/api/books', { title, author, pubdate, pagecount, cover })
-      .then((response) => {
-        refreshBookList();
-      })
-      .catch((error) => {
-        console.log('post book', error);
-      });
+    //   axios
+    //     .post('/api/books', { title, author, pubdate, pagecount, cover })
+    //     .then((response) => {
+    //       refreshBookList();
+    //     })
+    //     .catch((error) => {
+    //       console.log('post book', error);
+    //     });
 
-    setTitle('');
-    setAuthor('');
-    setPubDate('');
-    setPageCount('');
-    setCover('');
+    //   setTitle('');
+    //   setAuthor('');
+    //   setPubDate('');
+    //   setPageCount('');
+    //   setCover('');
   };
 
   return (
@@ -37,40 +47,50 @@ function BookForm({ refreshBookList }) {
         <input
           required
           placeholder="Title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          value={newBook.title}
+          onChange={(event) =>
+            setNewBook({ ...newBook, title: event.target.value })
+          }
         />
 
         <input
           required
           placeholder="Author"
-          value={author}
-          onChange={(event) => setAuthor(event.target.value)}
+          value={newBook.author}
+          onChange={(event) =>
+            setNewBook({ ...newBook, author: event.target.value })
+          }
         />
 
         <input
           required
           placeholder="Published"
-          value={pubdate}
-          onChange={(event) => setPubDate(event.target.value)}
+          value={newBook.pubdate}
+          onChange={(event) =>
+            setNewBook({ ...newBook, pubdate: event.target.value })
+          }
         />
 
         <input
           required
           placeholder="Page Count"
-          value={pagecount}
-          onChange={(event) => setPageCount(event.target.value)}
+          value={newBook.pagecount}
+          onChange={(event) =>
+            setNewBook({ ...newBook, pagecount: event.target.value })
+          }
         />
 
         <input
           required
           placeholder="Cover"
-          value={cover}
-          onChange={(event) => setCover(event.target.value)}
+          value={newBook.cover}
+          onChange={(event) =>
+            setNewBook({ ...newBook, cover: event.target.value })
+          }
         />
 
         <Link to="user">
-          <button type="submit">Add New Book</button>
+          <button onClick={handleSubmit}>Add New Book</button>
         </Link>
       </form>
     </section>

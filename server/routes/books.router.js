@@ -31,16 +31,25 @@ router.get('/:userID', (req, res) => {
 /**
  * POST route template
  */
-router.post('/:userID', (req, res) => {
-  const { userID } = req.params;
-  console.log('POST', userID);
+router.post('/', (req, res) => {
+  // const { userID } = req.params;
+  console.log('POST');
 
   const queryText = `INSERT INTO "books" ("title", "author", "pubdate", "pagecount", "cover")
   VALUES ($1, $2, $3, $4, $5);`;
 
+  const sqlValues = [
+    req.body.title,
+    req.body.author,
+    req.body.pubdate,
+    req.body.pagecount,
+    req.body.cover,
+  ];
+
   pool
-    .query(queryText, [userID])
+    .query(queryText, sqlValues)
     .then((result) => {
+      console.log('New book add');
       res.sendStatus(201);
     })
     .catch((err) => {

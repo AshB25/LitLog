@@ -34,10 +34,15 @@ router.post('/', (req, res) => {
   const queryText = `INSERT INTO "goals" ("book_title", "number", "chp_pgs", "deadline")
   VALUES ($1, $2, $3, $4);`;
 
-  const { book_title, number, chp_pgs, deadline } = req.body;
+  const sqlValues = [
+    req.body.book_title,
+    req.body.number,
+    req.body.chp_pgs,
+    req.body.deadline,
+  ];
 
   pool
-    .query(queryText, [book_title, number, chp_pgs, deadline])
+    .query(queryText, sqlValues)
     .then((result) => {
       res.sendStatus(201);
     })
