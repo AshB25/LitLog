@@ -26,9 +26,22 @@ function* postBooks(action) {
   }
 }
 
+function* deleteBooks(action) {
+  try {
+    yield axios({
+      method: 'DELETE',
+      url: `/api/books/${action.payload.id}`,
+    });
+    yield put({ type: 'FETCH_BOOKS' });
+  } catch (error) {
+    console.log('delete saga error', error);
+  }
+}
+
 function* booksSaga() {
   yield takeLatest('FETCH_BOOKS', fetchBooks);
   yield takeLatest('POST_BOOKS', postBooks);
+  yield takeLatest('DELETE_BOOKS', deleteBooks);
 }
 
 export default booksSaga;
