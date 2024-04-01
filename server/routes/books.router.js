@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', req, res) => {
+router.delete('/', (req, res) => {
   console.log('Delete book', req.body);
   const { id } = req.params;
   const queryText = `DELETE FROM "books"
@@ -73,14 +73,14 @@ router.delete('/:id', req, res) => {
   const sqlValues = [id];
 
   pool
-  .query(queryText, sqlValues)
-  .then((results) => {
-    res.sendStatus(201);
-  })
-  .catch((err) => {
-    console.log('remove book error', err);
-    res.sendStatus(500);
-  });
-};
+    .query(queryText, sqlValues)
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('remove book error', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
