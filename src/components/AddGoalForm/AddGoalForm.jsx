@@ -9,12 +9,18 @@ function GoalForm() {
   const dispatch = useDispatch();
   // const [title, setTitle] = useState('');
   // const [number, setNumber] = useState('');
-  const [newGoal, setNewGoal] = useState('');
+  const [newGoal, setNewGoal] = useState({
+    book_title: '',
+    number: '',
+    chp_pgs: '',
+    deadline: '',
+  });
 
   const addGoal = (event) => {
     event.preventDefault();
+    console.log(newGoal);
     dispatch({ type: 'POST_GOALS', payload: newGoal });
-    setNewGoal({ title: '', number: '' });
+    setNewGoal({ book_title: '', number: '', chp_pgs: '', deadline: '' });
   };
 
   return (
@@ -23,9 +29,9 @@ function GoalForm() {
         <input
           required
           placeholder="Title"
-          value={newGoal.title}
+          value={newGoal.book_title}
           onChange={(event) =>
-            setNewGoal({ ...newGoal, title: event.target.value })
+            setNewGoal({ ...newGoal, book_title: event.target.value })
           }
         />
         <input
@@ -36,9 +42,26 @@ function GoalForm() {
             setNewGoal({ ...newGoal, number: event.target.value })
           }
         />
+        <input
+          required
+          placeholder="Chapters/Pages"
+          value={newGoal.chp_pgs}
+          onChange={(event) =>
+            setNewGoal({ ...newGoal, chp_pgs: event.target.value })
+          }
+        />
+        <input
+          required
+          placeholder="Deadline"
+          type="date"
+          value={newGoal.deadline}
+          onChange={(event) =>
+            setNewGoal({ ...newGoal, deadline: event.target.value })
+          }
+        />
 
-        <ChpPgButton />
-        <DeadlineButton />
+        {/* <ChpPgButton />
+        <DeadlineButton /> */}
 
         <Link to="user">
           <button onClick={addGoal}>Save New Goal!</button>

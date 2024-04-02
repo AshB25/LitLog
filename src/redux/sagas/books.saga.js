@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchBooks(action) {
   try {
-    const booksResponse = yield axios.get('/api/books/');
+    const booksResponse = yield axios.get(`/api/books/${action.payload}`);
     yield put({
       type: 'SET_BOOKS',
       payload: booksResponse.data,
@@ -13,35 +13,36 @@ function* fetchBooks(action) {
   }
 }
 
-function* postBooks(action) {
-  try {
-    yield axios({
-      method: 'POST',
-      url: '/api/books',
-      data: action.payload,
-    });
-    yield put({ type: 'FETCH_BOOKS' });
-  } catch (error) {
-    console.log('post books error', error);
-  }
-}
+// function* postBooks(action) {
+//   try {
+//     yield axios({
+//       method: 'POST',
+//       url: '/api/books',
+//       data: action.payload,
+//     });
+//     yield put({ type: 'FETCH_BOOKS' });
+//   } catch (error) {
+//     console.log('post books error', error);
+//   }
+// }
 
-function* deleteBooks(action) {
-  try {
-    yield axios({
-      method: 'DELETE',
-      url: `/api/books/${action.payload.id}`,
-    });
-    yield put({ type: 'FETCH_BOOKS' });
-  } catch (error) {
-    console.log('delete saga error', error);
-  }
-}
+// function* deleteBooks(action) {
+//   try {
+//     yield axios({
+//       method: 'DELETE',
+//       url: '/api/books/',
+//       data: action.payload,
+//     });
+//     yield put({ type: 'FETCH_BOOKS' });
+//   } catch (error) {
+//     console.log('delete saga error', error);
+//   }
+// }
 
 function* booksSaga() {
   yield takeLatest('FETCH_BOOKS', fetchBooks);
-  yield takeLatest('POST_BOOKS', postBooks);
-  yield takeLatest('DELETE_BOOKS', deleteBooks);
+  // yield takeLatest('POST_BOOKS', postBooks);
+  // yield takeLatest('DELETE_BOOKS', deleteBooks);
 }
 
 export default booksSaga;
