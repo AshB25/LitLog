@@ -55,7 +55,6 @@ function BookForm() {
 
   return (
     <section>
-      <h2>New Lit to Read</h2>
       <form onSubmit={handleSubmit} className="add_book_form">
         <input
           required
@@ -102,9 +101,9 @@ function BookForm() {
           }
         />
 
-        <Link to="user">
-          <button onClick={handleSubmit}>Add New Book</button>
-        </Link>
+        <button type="submit" onClick={handleSubmit}>
+          <Link to="user">Add New Book</Link>
+        </button>
       </form>
     </section>
   );

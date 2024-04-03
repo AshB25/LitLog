@@ -8,24 +8,26 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/:userID', (req, res) => {
+router.get('/:id', (req, res) => {
   // GET route code here
   console.log('get all books request');
   // console.log('is authenticated?', req.isAuthenticated());
   // console.log('user', req.user);
   // console.log(req.params);
-  const { userID } = req.params;
-  console.log(userID);
+  const userID = req.params.id;
+  console.log('book get route', userID);
 
   const queryText = `SELECT * FROM "books"
   JOIN "user" ON "user"."id"="books"."user_id"
   WHERE "user"."id" = $1
   ORDER BY "author";`;
 
+  const queryId = [userID];
+
   // const queryText = `SELECT * FROM "books" WHERE "user_id" = $1;`;
 
   pool
-    .query(queryText, [userID])
+    .query(queryText, queryId)
     .then((result) => {
       console.log('books get', result.rows);
       res.send(result.rows);

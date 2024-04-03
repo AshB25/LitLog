@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DeleteBook from '../DeleteBook/DeleteBook';
 
-function BookList({ refreshBookList }) {
+function BookList() {
   const dispatch = useDispatch();
   const books = useSelector((store) => store.books);
   const user = useSelector((store) => store.user);
