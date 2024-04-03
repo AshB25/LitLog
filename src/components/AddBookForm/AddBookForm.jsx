@@ -13,7 +13,8 @@ function BookForm({ refreshBookList }) {
   const [newBook, setNewBook] = useState({
     title: '',
     author: '',
-    pagecount: '',
+    pubdate: 0,
+    pagecount: 0,
     cover: '',
   });
 

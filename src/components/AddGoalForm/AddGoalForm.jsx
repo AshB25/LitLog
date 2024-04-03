@@ -16,7 +16,7 @@ function GoalForm() {
     deadline: '',
   });
 
-  const addGoal = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log(newGoal);
     dispatch({ type: 'POST_GOALS', payload: newGoal });
@@ -64,7 +64,7 @@ function GoalForm() {
         <DeadlineButton /> */}
 
         <Link to="user">
-          <button onClick={addGoal}>Save New Goal!</button>
+          <button onClick={handleSubmit}>Save New Goal!</button>
         </Link>
       </form>
     </section>

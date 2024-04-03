@@ -39,33 +39,35 @@ router.get('/:userID', (req, res) => {
 /**
  * POST route template
  */
-// router.post('/', (req, res) => {
-//   // const { userID } = req.params;
-//   console.log('POST');
+router.post('/', (req, res) => {
+  // const { userID } = req.params;
+  console.log('POST');
+  // console.log('is authenticated?', req.isAuthenticated());
+  // console.log('user', req.user);
+  // console.log(req.params);
 
-//   const queryText = `INSERT INTO "books" ("user_id", "title", "author", "pubdate", "pagecount", "cover")
-//   VALUES ($1, $2, $3, $4, $5, $6);`;
+  const queryText = `INSERT INTO "books" ("title", "author", "pubdate", "pagecount", "cover", "user_id")
+  VALUES ($1, $2, $3, $4, $5);`;
 
-//   const sqlValues = [
-//     1,
-//     req.body.title,
-//     req.body.author,
-//     req.body.pubdate,
-//     req.body.pagecount,
-//     req.body.cover,
-//   ];
+  const sqlValues = [
+    req.body.title,
+    req.body.author,
+    req.body.pubdate,
+    req.body.pagecount,
+    req.body.cover,
+  ];
 
-//   pool
-//     .query(queryText, sqlValues)
-//     .then((result) => {
-//       console.log('New book add');
-//       res.sendStatus(201);
-//     })
-//     .catch((err) => {
-//       console.log('server post books error', err);
-//       res.sendStatus(500);
-//     });
-// });
+  pool
+    .query(queryText, sqlValues, [req.user.id])
+    .then((result) => {
+      console.log('New book add');
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('server post books error', err);
+      res.sendStatus(500);
+    });
+});
 
 // router.delete('/', (req, res) => {
 //   console.log('Delete book', req.body);

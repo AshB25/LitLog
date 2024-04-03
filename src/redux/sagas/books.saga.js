@@ -13,18 +13,18 @@ function* fetchBooks(action) {
   }
 }
 
-// function* postBooks(action) {
-//   try {
-//     yield axios({
-//       method: 'POST',
-//       url: '/api/books',
-//       data: action.payload,
-//     });
-//     yield put({ type: 'FETCH_BOOKS' });
-//   } catch (error) {
-//     console.log('post books error', error);
-//   }
-// }
+function* postBooks(action) {
+  try {
+    yield axios({
+      method: 'POST',
+      url: '/api/books',
+      data: action.payload,
+    });
+    yield put({ type: 'FETCH_BOOKS' });
+  } catch (error) {
+    console.log('post books error', error);
+  }
+}
 
 // function* deleteBooks(action) {
 //   try {
@@ -41,7 +41,7 @@ function* fetchBooks(action) {
 
 function* booksSaga() {
   yield takeLatest('FETCH_BOOKS', fetchBooks);
-  // yield takeLatest('POST_BOOKS', postBooks);
+  yield takeLatest('POST_BOOKS', postBooks);
   // yield takeLatest('DELETE_BOOKS', deleteBooks);
 }
 
