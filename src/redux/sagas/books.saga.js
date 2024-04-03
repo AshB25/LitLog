@@ -15,6 +15,7 @@ function* fetchBooks(action) {
 
 function* postBooks(action) {
   try {
+    console.log('post book saga', action.payload);
     yield axios({
       method: 'POST',
       url: '/api/books',

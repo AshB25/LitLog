@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function BookForm({ refreshBookList }) {
+function BookForm() {
   const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user);
+
   // const [title, setTitle] = useState('');
   // const [author, setAuthor] = useState('');
   // // const [pubdate, setPubDate] = useState('');
@@ -20,8 +23,17 @@ function BookForm({ refreshBookList }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch({ type: 'POST_BOOKS', payload: newBook });
-    setNewBook({ title: '', author: '', pagecount: '', cover: '' });
+    dispatch({
+      type: 'POST_BOOKS',
+      payload: { newBook: newBook, userId: user.id },
+    });
+    setNewBook({
+      title: '',
+      author: '',
+      pubdate: '',
+      pagecount: '',
+      cover: '',
+    });
 
     //   console.log('Add Book', { title, author, pubdate, pagecount, cover });
 

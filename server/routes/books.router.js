@@ -47,18 +47,23 @@ router.post('/', (req, res) => {
   // console.log(req.params);
 
   const queryText = `INSERT INTO "books" ("title", "author", "pubdate", "pagecount", "cover", "user_id")
-  VALUES ($1, $2, $3, $4, $5);`;
+  VALUES ($1, $2, $3, $4, $5, $6);`;
 
   const sqlValues = [
-    req.body.title,
-    req.body.author,
-    req.body.pubdate,
-    req.body.pagecount,
-    req.body.cover,
+    req.body.newBook.title,
+    req.body.newBook.author,
+    req.body.newBook.pubdate,
+    req.body.newBook.pagecount,
+    req.body.newBook.cover,
+    req.body.userId,
   ];
 
+  console.log('post route', req.body);
+  console.log('new book post', req.body.newBook);
+  console.log(sqlValues);
+
   pool
-    .query(queryText, sqlValues, [req.user.id])
+    .query(queryText, sqlValues)
     .then((result) => {
       console.log('New book add');
       res.sendStatus(201);
