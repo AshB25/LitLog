@@ -17,9 +17,13 @@ router.get('/:userId', (req, res) => {
   const { userId } = req.params;
   console.log(userId);
 
-  const queryText = `SELECT * FROM "goals"
-  JOIN "user" ON "user"."id"="goals"."user_id"
-  WHERE "user"."id" = $1;`;
+  // const queryText = `SELECT * FROM "goals"
+  // JOIN "user" ON "user"."id"="goals"."user_id"
+  // WHERE "user"."id" = $1;`;
+
+  const queryText = `SELECT "goals".book_title, "goals".number, "goals".chp_pgs, "goals".deadline FROM "goals"
+JOIN "user" ON "user"."id"="goals"."user_id"
+WHERE "user"."id" = $1;`;
 
   pool
     .query(queryText, [userId])
