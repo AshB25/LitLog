@@ -13,22 +13,23 @@ function* fetchGoals(action) {
   }
 }
 
-// function* postGoals(action) {
-//   try {
-//     yield axios({
-//       method: 'POST',
-//       url: '/api/goals',
-//       data: action.payload,
-//     });
-//     yield put({ type: 'FETCH_GOALS' });
-//   } catch (error) {
-//     console.log('post goals error', error);
-//   }
-// }
+function* postGoals(action) {
+  try {
+    console.log('post goal saga', action.payload);
+    yield axios({
+      method: 'POST',
+      url: '/api/goals',
+      data: action.payload,
+    });
+    yield put({ type: 'FETCH_GOALS' });
+  } catch (error) {
+    console.log('post goals error', error);
+  }
+}
 
 function* goalsSaga() {
   yield takeLatest('FETCH_GOALS', fetchGoals);
-  // yield takeLatest('POST_GOALS', postGoals);
+  yield takeLatest('POST_GOALS', postGoals);
 }
 
 export default goalsSaga;

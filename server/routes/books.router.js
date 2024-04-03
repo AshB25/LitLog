@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
  */
 router.post('/', (req, res) => {
   // const { userID } = req.params;
-  console.log('POST');
+  console.log('POST book');
   // console.log('is authenticated?', req.isAuthenticated());
   // console.log('user', req.user);
   // console.log(req.params);
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
     req.body.userId,
   ];
 
-  console.log('post route', req.body);
+  console.log('book post route', req.body);
   console.log('new book post', req.body.newBook);
   console.log(sqlValues);
 

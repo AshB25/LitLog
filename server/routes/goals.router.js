@@ -15,7 +15,7 @@ router.get('/:userId', (req, res) => {
   // console.log('user', req.user);
   // console.log(req.params);
   const { userId } = req.params;
-  console.log(userId);
+  console.log('get goal router', userId);
 
   // const queryText = `SELECT * FROM "goals"
   // JOIN "user" ON "user"."id"="goals"."user_id"
@@ -40,35 +40,37 @@ WHERE "user"."id" = $1;`;
 /**
  * POST route template
  */
-// router.post('/', (req, res) => {
-//   //   // POST route code here
-//   console.log('/goals POST route');
-//   console.log(req.body);
-//   console.log('is authenticated?', req.isAuthenticated());
-//   console.log('user', req.user);
-//   res.sendStatus(200);
-//   console.log(req.body);
-//   const queryText = `INSERT INTO "goals" ("book_id", "user_id", "book_title", "number", "chp_pgs", "deadline")
-//   VALUES ($1, $2, $3, $4, $5, $6);`;
+router.post('/', (req, res) => {
+  //   // POST route code here
+  console.log('goals POST route');
+  console.log('post goal', req.body);
 
-//   const sqlValues = [
-//     1,
-//     1,
-//     req.body.book_title,
-//     req.body.number,
-//     req.body.chp_pgs,
-//     req.body.deadline,
-//   ];
+  const queryText = `INSERT INTO "goals" ("book_id", "user_id", "book_title", "number", "chp_pgs", "deadline")
+  VALUES ($1, $2, $3, $4, $5, $6);`;
 
-//   pool
-//     .query(queryText, sqlValues)
-//     .then((result) => {
-//       res.sendStatus(201);
-//     })
-//     .catch((err) => {
-//       console.log('server post goals error', err);
-//       res.sendStatus(500);
-//     });
-// });
+  const sqlValues = [
+    req.body.bookId,
+    req.body.userId,
+    req.body.book_title,
+    req.body.number,
+    req.body.chp_pgs,
+    req.body.deadline,
+  ];
+
+  console.log('goals post route', req.body);
+  console.log('goals post', sqlValues);
+  console.log('new goal post', req.body.newGoal);
+
+  pool
+    .query(queryText, sqlValues)
+    .then((result) => {
+      console.log('new goal add');
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('server post goals error', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
