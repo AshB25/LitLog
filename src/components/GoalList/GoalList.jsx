@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function GoalList({ refreshGoalList }) {
+function GoalList() {
   const dispatch = useDispatch();
   const goals = useSelector((store) => store.goals);
   const user = useSelector((store) => store.user);
@@ -24,17 +24,17 @@ function GoalList({ refreshGoalList }) {
   }, []);
 
   return (
-    <Box sx={{ width: '50%' }}>
+    <Box id="" sx={{ width: '30%', height: '30%' }}>
       <Stack spacing={2}>
         <section className="goals">
           {goals.map((goals) => {
             return (
-              <div key={goals.id}>
+              <div class="single-line" key={goals.id}>
                 <Item>
-                  <h6>{goals.book_title}</h6>
-                  <h6>{goals.number}</h6>
-                  <h6>{goals.chp_pgs}</h6>
-                  <h6>{goals.deadline}</h6>
+                  <p>{goals.book_title}</p>
+                  <p>{goals.number}</p>
+                  <p>{goals.chp_pgs}</p>
+                  <p>{goals.deadline}</p>
                 </Item>
               </div>
             );
@@ -45,4 +45,37 @@ function GoalList({ refreshGoalList }) {
   );
 }
 
+{
+  /* <div>
+  <div id='external-events'>
+  <p>
+    <strong>Goals</strong>
+  </p>
+
+  <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+    <div class='fc-event-main'>{goals.id}</div>
+    {goals.map((goals) => {
+            return (
+              <div key={goals.id}>
+                  <h6>{goals.book_title}</h6>
+                  <h6>{goals.number}</h6>
+                  <h6>{goals.chp_pgs}</h6>
+                  <h6>{goals.deadline}</h6>
+              </div>
+            );
+          })}
+  </div>
+
+  </div>
+
+  <p>
+    <input type='checkbox' id='drop-remove' />
+    <label for='drop-remove'>remove after drop</label>
+  </p>
+</div>
+</div>
+<div id='calendar-container'>
+  <div id='calendar'></div>
+</div> */
+}
 export default GoalList;

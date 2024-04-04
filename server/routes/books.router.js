@@ -8,13 +8,13 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   // GET route code here
   console.log('get all books request');
   // console.log('is authenticated?', req.isAuthenticated());
   // console.log('user', req.user);
   // console.log(req.params);
-  const userID = req.params.id;
+  const userID = req.user.id;
   console.log('book get route', userID);
 
   const queryText = `SELECT * FROM "books"

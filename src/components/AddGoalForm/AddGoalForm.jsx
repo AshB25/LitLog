@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import DeadlineButton from '../DeadlineButton/DeadlineButton';
-import ChpPgButton from '../ChpPgButton/ChpPgButton';
+// import DeadlineButton from '../DeadlineButton/DeadlineButton';
+// import ChpPgButton from '../ChpPgButton/ChpPgButton';
 
 function GoalForm() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const books = useSelector((store) => store.books);
+  // const goal = useSelector((store) => store.goals);
 
   // const [title, setTitle] = useState('');
   // const [number, setNumber] = useState('');

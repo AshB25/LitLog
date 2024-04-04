@@ -28,9 +28,9 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/info">
+            {/* <Link className="navLink" to="/info">
               Info Page
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/addbook">
               Add New Lit
@@ -44,9 +44,9 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
+        {/* <Link className="navLink" to="/about">
           About
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

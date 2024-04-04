@@ -21,7 +21,7 @@ function* postGoals(action) {
       url: '/api/goals',
       data: action.payload,
     });
-    yield put({ type: 'FETCH_GOALS' });
+    yield put({ type: 'FETCH_GOALS', payload: action.payload.userId });
   } catch (error) {
     console.log('post goals error', error);
   }

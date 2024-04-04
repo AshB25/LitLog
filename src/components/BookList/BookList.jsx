@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import '../Styling/styles.css';
+
 // import { styled } from '@mui/material/styles';
 // import Box from '@mui/material/Box';
 // import Paper from '@mui/material/Paper';
@@ -14,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //   color: theme.palette.text.secondary,
 // }));
 
-import DeleteBook from '../DeleteBook/DeleteBook';
+// import DeleteBook from '../DeleteBook/DeleteBook';
 
 function BookList() {
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ function BookList() {
 
   return (
     <div className="container">
-      <h1>Books</h1>
+      <h2>Books</h2>
 
       <section className="books">
         {books.map((books) => {
@@ -37,7 +39,7 @@ function BookList() {
                 {/* <li>{books.title}</li>
                 <li>{books.author}</li> */}
                 <img src={books.cover} alt={books.title} />
-                <DeleteBook />
+                {/* <DeleteBook /> */}
                 {/* refreshBookList={refreshBookList} */}
               </ul>
             </div>

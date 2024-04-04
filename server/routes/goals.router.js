@@ -45,16 +45,15 @@ router.post('/', (req, res) => {
   console.log('goals POST route');
   console.log('post goal', req.body);
 
-  const queryText = `INSERT INTO "goals" ("book_id", "user_id", "book_title", "number", "chp_pgs", "deadline")
-  VALUES ($1, $2, $3, $4, $5, $6);`;
+  const queryText = `INSERT INTO "goals" ("user_id", "book_title", "number", "chp_pgs", "deadline")
+  VALUES ($1, $2, $3, $4, $5);`;
 
   const sqlValues = [
-    req.body.bookId,
     req.body.userId,
-    req.body.book_title,
-    req.body.number,
-    req.body.chp_pgs,
-    req.body.deadline,
+    req.body.newGoal.book_title,
+    req.body.newGoal.number,
+    req.body.newGoal.chp_pgs,
+    req.body.newGoal.deadline,
   ];
 
   console.log('goals post route', req.body);

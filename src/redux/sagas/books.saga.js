@@ -4,7 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchBooks(action) {
   try {
     console.log('get book saga', action.payload);
-    const booksResponse = yield axios.get(`/api/books/${action.payload}`);
+    const booksResponse = yield axios.get(`/api/books`);
     // const booksResponse = yield axios({
     //   method: 'GET',
     //   url: '/api/books',

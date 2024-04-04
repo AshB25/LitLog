@@ -13,8 +13,8 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Edit Profile</p>
-      <h3>Goals</h3>
+      {/* <p>Edit Profile</p> */}
+      <h2>Goals</h2>
       <GoalList />
       <Calendar />
       <BookList />
