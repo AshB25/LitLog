@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // // import Stack from '@mui/material/Stack';
 // import { styled } from '@mui/material/styles';
 
+import CompButton from '../CompleteButton/CompleteButton';
+
 import '../Styling/styles.css';
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -24,6 +26,11 @@ function GoalList() {
   const dispatch = useDispatch();
   const goals = useSelector((store) => store.goals);
   const user = useSelector((store) => store.user);
+
+  // const comBtn = document.querySelector('.com-btn');
+  // comBtn.addEventListener('click', () => {
+  //   comBtn.style.backgroundColor = '#2d4c59';
+  // });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GOALS', payload: user.id });
@@ -94,8 +101,8 @@ function GoalList() {
                     <td>{goals.deadline}</td>
                   </tr>
                 </tbody>
-                <button>Complete</button>
-                <button>Delete</button>
+                <CompButton />
+                <button class="goal-btn">Delete</button>
               </table>
             </div>
           );

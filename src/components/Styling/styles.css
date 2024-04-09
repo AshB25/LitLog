@@ -9,6 +9,7 @@ img {
   padding: 5px;
   width: 120px;
   height: 150px;
+  background-color: black;
 }
 
 /* li { */
@@ -112,10 +113,18 @@ th {
   font-weight: bold;
 }
 
-tr:hover {
+.goal-btn:hover {
   background-color: darkgray;
 }
 
 .goals-table tr td {
   width: 200px;
+}
+
+.calendar {
+  background-color: gray;
+}
+
+button.active {
+  background-color: green;
 }

@@ -13,7 +13,7 @@ export default function Calendar() {
   }));
 
   return (
-    <>
+    <div class="calendar">
       {/* <div>{JSON.stringify(goals)}</div> */}
       <FullCalendar
         class="calendar"
@@ -21,7 +21,7 @@ export default function Calendar() {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
       />
-    </>
+    </div>
   );
 }
 // import { Calendar } from '@fullcalendar/core';
