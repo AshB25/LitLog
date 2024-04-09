@@ -10,3 +10,112 @@ img {
   width: 120px;
   height: 150px;
 }
+
+/* li { */
+/* display: inline-block; */
+/* margin-right: 10px; add spacing between items */
+/* } */
+
+/* ul {
+  list-style-image: url();
+} */
+
+/* .goals-table {
+  border-collapse: collapse;
+  margin: 25 px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(rgb(101, 99, 99));
+} */
+
+/* .goals-table thead tr {
+  background-color: cadetblue;
+  color: beige;
+  text-align: left;
+  font-weight: bold;
+} */
+
+/* .goals-table th,
+.goals-table td {
+  padding: 12 px 15px;
+} */
+
+/* .goals-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.goals-table tbody tr:nth-of-type(even) {
+  background-color: rgb(197, 123, 27);
+}
+
+.goals-table tbody tr:last-of-type {
+  border-bottom: 2px solid cadetblue;
+} */
+
+/* table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 8px;
+  width: 100%;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 8px;
+  width: 100%;
+}
+
+tr {
+  border: none;
+  width: 100%;
+}
+
+.verticalSplit {
+  border-top: none;
+  border-bottom: none;
+}
+.verticalSplit:first-of-type {
+  border-left: none;
+}
+.verticalSplit:last-of-type {
+  border-right: none;
+} */
+
+.goals-table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.goals-table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ddd;
+}
+
+th {
+  background-color: darkgoldenrod;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: darkgray;
+}
+
+.goals-table tr td {
+  width: 200px;
+}

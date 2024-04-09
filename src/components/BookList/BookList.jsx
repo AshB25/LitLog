@@ -16,7 +16,7 @@ import '../Styling/styles.css';
 //   color: theme.palette.text.secondary,
 // }));
 
-// import DeleteBook from '../DeleteBook/DeleteBook';
+import DeleteBook from '../DeleteBook/DeleteBook';
 
 function BookList() {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function BookList() {
                 {/* <li>{books.title}</li>
                 <li>{books.author}</li> */}
                 <img src={books.cover} alt={books.title} />
-                {/* <DeleteBook /> */}
+                <DeleteBook />
                 {/* refreshBookList={refreshBookList} */}
               </ul>
             </div>

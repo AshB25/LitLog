@@ -76,22 +76,28 @@ router.post('/', (req, res) => {
     });
 });
 
-// router.delete('/', (req, res) => {
-//   console.log('Delete book', req.body);
-//   // const { id } = req.params;
-//   const queryText = `DELETE FROM "books"
-//                     WHERE "user_id" = $1;`;
-//   // const sqlValues = [id];
+router.delete('/', (req, res) => {
+  console.log('Delete book route', req.body);
 
-//   pool
-//     .query(queryText)
-//     .then((results) => {
-//       res.sendStatus(201);
-//     })
-//     .catch((err) => {
-//       console.log('remove book error', err);
-//       res.sendStatus(500);
-//     });
-// });
+  const iD = req.user.id;
+  console.log('book delete route', iD);
+
+  // const queryText = `DELETE FROM "books"
+  //                   WHERE "user_id" = $1;`;
+
+  const queryText = `DELETE books FROM books JOIN goals ON goals.book_id = books.id WHERE books.id = $1 SELECT * FROM books`;
+
+  const bookID = [iD];
+
+  pool
+    .query(queryText, bookID)
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log('remove book error', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

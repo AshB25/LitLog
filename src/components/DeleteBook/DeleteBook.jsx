@@ -5,7 +5,7 @@ const DeleteBook = () => {
   const books = useSelector((store) => store.books);
 
   const handleClickDelete = () => {
-    dispatch({ type: 'DELETE_BOOKS' });
+    dispatch({ type: 'DELETE_BOOKS', payload: { id: books.id } });
   };
 
   return (

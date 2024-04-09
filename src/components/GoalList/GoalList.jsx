@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+// import Box from '@mui/material/Box';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Container from '@mui/material/Container';
+// import Paper from '@mui/material/Paper';
+// import Grid from '@mui/material/Grid';
+// // import Stack from '@mui/material/Stack';
+// import { styled } from '@mui/material/styles';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import '../Styling/styles.css';
+
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// }));
 
 function GoalList() {
   const dispatch = useDispatch();
@@ -23,59 +29,79 @@ function GoalList() {
     dispatch({ type: 'FETCH_GOALS', payload: user.id });
   }, []);
 
+  // return (
+  // <div>
+  {
+    /* <Stack direction="row" spacing={2}> */
+  }
+  {
+    /* <section className="goals"> */
+  }
+  // {goals.map((goals) => {
+  // return (
+  // <div key={goals.id}>
+  // <React.Fragment>
+  // <CssBaseline />
+  // <Container maxWidth="md">
+  // <ul>
+  //   <li>
+  //   {goals.book_title} {goals.number} {goals.chp_pgs}{' '}
+  //   {goals.deadline}
+  // </li>
+  {
+    /* <li>{goals.number}</li> */
+  }
+  {
+    /* <li>{goals.chp_pgs}</li> */
+  }
+  {
+    /* <li>{goals.deadline}</li> */
+  }
+  //     </ul>
+  //     <button className="delete">Delete</button>
+  //   </Container>
+  // </React.Fragment>
+  //             </div>
+  //           );
+  //         })}
+  //       </section>
+  //       {/* </Stack> */}
+  //     </div>
+  //   );
+  // }
+
   return (
-    <Box id="" sx={{ width: '30%', height: '30%' }}>
-      <Stack spacing={2}>
-        <section className="goals">
-          {goals.map((goals) => {
-            return (
-              <div class="single-line" key={goals.id}>
-                <Item>
-                  <p>{goals.book_title}</p>
-                  <p>{goals.number}</p>
-                  <p>{goals.chp_pgs}</p>
-                  <p>{goals.deadline}</p>
-                </Item>
-              </div>
-            );
-          })}
-        </section>
-      </Stack>
-    </Box>
+    <div>
+      <h2>Your reading Goals</h2>
+      <section className="goals">
+        {goals.map((goals) => {
+          return (
+            <div key={goals.id}>
+              <table class="goals-table">
+                <thead>
+                  <tr>
+                    <th>Book Title</th>
+                    <th>Goal</th>
+                    <th>Deadline</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{goals.book_title}</td>
+                    <td>
+                      {goals.number} {goals.chp_pgs}
+                    </td>
+                    <td>{goals.deadline}</td>
+                  </tr>
+                </tbody>
+                <button>Complete</button>
+                <button>Delete</button>
+              </table>
+            </div>
+          );
+        })}
+      </section>
+    </div>
   );
-}
-
-{
-  /* <div>
-  <div id='external-events'>
-  <p>
-    <strong>Goals</strong>
-  </p>
-
-  <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-    <div class='fc-event-main'>{goals.id}</div>
-    {goals.map((goals) => {
-            return (
-              <div key={goals.id}>
-                  <h6>{goals.book_title}</h6>
-                  <h6>{goals.number}</h6>
-                  <h6>{goals.chp_pgs}</h6>
-                  <h6>{goals.deadline}</h6>
-              </div>
-            );
-          })}
-  </div>
-
-  </div>
-
-  <p>
-    <input type='checkbox' id='drop-remove' />
-    <label for='drop-remove'>remove after drop</label>
-  </p>
-</div>
-</div>
-<div id='calendar-container'>
-  <div id='calendar'></div>
-</div> */
 }
 export default GoalList;

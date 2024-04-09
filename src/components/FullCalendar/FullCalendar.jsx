@@ -16,6 +16,7 @@ export default function Calendar() {
     <>
       {/* <div>{JSON.stringify(goals)}</div> */}
       <FullCalendar
+        class="calendar"
         events={events}
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
