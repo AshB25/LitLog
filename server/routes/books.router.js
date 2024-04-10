@@ -85,12 +85,12 @@ router.delete('/', (req, res) => {
   // const queryText = `DELETE FROM "books"
   //                   WHERE "user_id" = $1;`;
 
-  const queryText = `DELETE books FROM books JOIN goals ON goals.book_id = books.id WHERE books.id = $1 SELECT * FROM books`;
+  // const queryText = `DELETE books FROM books JOIN goals ON goals.book_id = books.id WHERE books.id = $1 SELECT * FROM books`;
 
   const bookID = [iD];
 
   pool
-    .query(queryText, bookID)
+    .query(bookID)
     .then((results) => {
       res.sendStatus(201);
     })

@@ -31,21 +31,21 @@ function BookList() {
     <div className="container">
       <h2>Books</h2>
 
-      <section className="books">
-        {books.map((books) => {
-          return (
-            <div key={books.id}>
-              <ul>
+      <ul>
+        <section className="books">
+          {books.map((books) => {
+            return (
+              <div key={books.id}>
                 {/* <li>{books.title}</li>
                 <li>{books.author}</li> */}
                 <img src={books.cover} alt={books.title} />
                 <DeleteBook />
                 {/* refreshBookList={refreshBookList} */}
-              </ul>
-            </div>
-          );
-        })}
-      </section>
+              </div>
+            );
+          })}
+        </section>
+      </ul>
     </div>
   );
 }
