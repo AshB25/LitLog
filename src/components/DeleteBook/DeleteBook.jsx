@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-const DeleteBook = () => {
+const DeleteBook = ({ bookID }) => {
   const dispatch = useDispatch();
   const books = useSelector((store) => store.books);
   const user = useSelector((store) => store.user);
 
-  const handleClickDelete = (bookID) => {
-    dispatch({ type: 'DELETE_BOOKS', payload: { id: user.id } });
+  const handleClickDelete = () => {
+    dispatch({ type: 'DELETE_BOOKS', payload: { id: bookID } });
   };
 
   return (

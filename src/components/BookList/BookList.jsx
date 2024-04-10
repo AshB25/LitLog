@@ -29,7 +29,7 @@ function BookList() {
 
   return (
     <div className="container">
-      <h2>Books</h2>
+      <h2>Your Books</h2>
 
       <ul>
         <section className="books">
@@ -38,8 +38,9 @@ function BookList() {
               <div key={books.id}>
                 {/* <li>{books.title}</li>
                 <li>{books.author}</li> */}
+                {/* <p>{books.id}</p> */}
                 <img src={books.cover} alt={books.title} />
-                <DeleteBook />
+                <DeleteBook bookID={books.id} />
                 {/* refreshBookList={refreshBookList} */}
               </div>
             );

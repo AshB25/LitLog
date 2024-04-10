@@ -36,12 +36,12 @@ function* postBooks(action) {
 function* deleteBooks(action) {
   try {
     console.log('delete book action.payload:', action.payload);
-    const deleteBooksResponse = yield axios.delete(`/api/books/id`);
-    // yield axios({
-    //   method: 'DELETE',
-    //   url: '/api/books/',
-    //   data: action.payload,
-    // });
+    // const deleteBooksResponse = yield axios.delete(`/api/books/`);
+    const deleteBooksResponse = yield axios({
+      method: 'DELETE',
+      url: '/api/books/',
+      data: action.payload,
+    });
     yield put({ type: 'FETCH_BOOKS', payload: deleteBooksResponse.data });
   } catch (error) {
     console.log('delete saga error', error);

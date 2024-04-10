@@ -18,8 +18,7 @@ router.get('/', (req, res) => {
   console.log('book get route', userID);
 
   const queryText = `SELECT * FROM "books"
-  JOIN "user" ON "user"."id"="books"."user_id"
-  WHERE "user"."id" = $1
+  WHERE "user_id" = $1
   ORDER BY "author";`;
 
   const queryId = [userID];
@@ -79,18 +78,16 @@ router.post('/', (req, res) => {
 router.delete('/', (req, res) => {
   console.log('Delete book route', req.body);
 
-  const iD = req.user.id;
+  const iD = req.body.id;
   console.log('book delete route', iD);
 
-  // const queryText = `DELETE FROM "books"
-  //                   WHERE "user_id" = $1;`;
-
-  // const queryText = `DELETE books FROM books JOIN goals ON goals.book_id = books.id WHERE books.id = $1 SELECT * FROM books`;
+  const queryText = `DELETE FROM "books"
+                    WHERE "id" = $1;`;
 
   const bookID = [iD];
 
   pool
-    .query(bookID)
+    .query(queryText, bookID)
     .then((results) => {
       res.sendStatus(201);
     })

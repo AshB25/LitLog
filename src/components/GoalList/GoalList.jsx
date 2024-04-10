@@ -79,7 +79,7 @@ function GoalList() {
 
   return (
     <div>
-      <h2>Your reading Goals</h2>
+      <h2>Your Reading Goals</h2>
       <section className="goals">
         {goals.map((goals) => {
           return (
