@@ -5,6 +5,7 @@ import AddBookButton from '../AddBookButton /AddBookButton';
 import BookList from '../BookList/BookList';
 import GoalList from '../GoalList/GoalList';
 import Calendar from '../FullCalendar/FullCalendar';
+import AddGoalButton from '../AddGoalButton/AddGoalButton';
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -12,9 +13,10 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
+      <h1>Welcome, {user.username}!</h1>
       {/* <p>Edit Profile</p> */}
       <GoalList />
+      <AddGoalButton />
       <Calendar />
       <BookList />
       <AddBookButton />

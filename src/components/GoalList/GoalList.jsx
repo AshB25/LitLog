@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // import Box from '@mui/material/Box';
 // import CssBaseline from '@mui/material/CssBaseline';
@@ -10,7 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // // import Stack from '@mui/material/Stack';
 // import { styled } from '@mui/material/styles';
 
+// import UpdateGoals from '../UpdateGoals/UpdateGoals';
 import CompButton from '../CompleteButton/CompleteButton';
+// import DeleteGoal from '../DeleteGoal/DeleteGoal';
 
 import '../Styling/styles.css';
 
@@ -101,9 +104,12 @@ function GoalList() {
                     <td>{goals.deadline}</td>
                   </tr>
                 </tbody>
-                <CompButton />
-                <button class="goal-btn">Delete</button>
               </table>
+              <CompButton />
+              {/* <button>
+                <Link to="updategoal">Update Goal</Link>
+              </button> */}
+              {/* <DeleteGoal /> */}
             </div>
           );
         })}

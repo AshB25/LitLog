@@ -72,4 +72,57 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/update/:id', (req, res) => {
+  console.log('Put route', req.body);
+  console.log('update id', req.params.id);
+
+  const id = req.params.id;
+  const goalID = [id];
+
+  const queryText = `UPDATE "goals"
+  SET "book_title" = $2, "number" = $3, "chp_pgs" = $4, "deadline" = $5"
+  WHERE "id" = $1;`;
+
+  const sqlValues = [
+    req.body.book_title,
+    req.body.number,
+    req.body.chp_pgs,
+    req.body.deadline,
+    req.body.goalsID,
+  ];
+
+  pool
+    .query(queryText, sqlValues)
+    .then((result) => {
+      console.log('update goal');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error updating goal', error);
+      res.sendStatus(500);
+    });
+});
+
+// router.delete('/', (req, res) => {
+//   console.log('Delete goal route', req.body);
+
+//   const iD = req.body.id;
+//   console.log('book delete route', iD);
+
+//   const queryText = `DELETE FROM "goals"
+//                     WHERE "id" = $1;`;
+
+//   const goalID = [iD];
+
+//   pool
+//     .query(queryText, goalID)
+//     .then((results) => {
+//       res.sendStatus(201);
+//     })
+//     .catch((err) => {
+//       console.log('remove book error', err);
+//       res.sendStatus(500);
+//     });
+// });
+
 module.exports = router;
