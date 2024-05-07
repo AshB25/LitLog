@@ -19,16 +19,12 @@ Git
 Install project dependencies
 
 ```
-//ADD OTHER DEPENDENCIES USED LATER
 npm install
-```
 npm install @mui/material @emotion/react @emotion/styled
+npm install @fullcalendar/react
+npm install @fullcalendar/daygrid
 ```
 
-And repeat
-
-```
-until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
