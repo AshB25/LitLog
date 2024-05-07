@@ -27,8 +27,6 @@ npm install @fullcalendar/daygrid
 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running Application
 
 run database from postgresql. Use the `database.sql` to initialize the database. 
